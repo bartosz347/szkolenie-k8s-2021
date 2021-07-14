@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: szkolenie-app-deployment
+  labels:
+    app: szkolenie-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: szkolenie-app
+  template:
+    metadata:
+      labels:
+        app: szkolenie-app
+    spec:
+      containers:
+        - name: szkolenie-app
+          # image: szkolenie_k8s_app:master
+          imagePullPolicy: Never # `Never` policy is required to run images built locally with Docker Desktop
+          # env:
+          #   - name: POD_NAME
+          #     valueFrom:
+          #       fieldRef:
+          #         fieldPath: metadata.name
+          ports:
+            - containerPort: 3000
