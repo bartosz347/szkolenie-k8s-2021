@@ -17,12 +17,12 @@ spec:
     spec:
       containers:
         - name: szkolenie-app
-          # image: szkolenie_k8s_app:master
+          image: szkolenie_k8s_app:master
           imagePullPolicy: Never # `Never` policy is required to run images built locally with Docker Desktop
-          # env:
-          #   - name: POD_NAME
-          #     valueFrom:
-          #       fieldRef:
-          #         fieldPath: metadata.name
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
           ports:
             - containerPort: 3000
